@@ -1,0 +1,36 @@
+@use "../../foundation/index";
+
+.section {
+  height: 100vh;
+}
+
+.section h1 {
+  font-size: 4.8rem;
+  font-weight: 600;
+}
+
+.section p {
+  font-size: 1.6rem;
+  font-weight: 400;
+}
+
+.section-1 {
+  background-color: rgba($color: red, $alpha: 0.1);
+}
+.section-2 {
+  background-color: rgba($color: green, $alpha: 0.1);
+}
+.section-3 {
+  background-color: rgba($color: blue, $alpha: 0.1);
+}
+
+.wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 100px;
+  height: 100%;
+  width: clamp(300px, 50%, 800px);
+  margin-inline: auto;
+}
