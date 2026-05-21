@@ -13,7 +13,6 @@ export class App {
   durations: number[] = [];
   lenis: Lenis;
   clock = new Clock();
-  params = { minDistance: 0.7 };
   private _trackBox = new Box3();
   private _trackCenter = new Vector3();
 
@@ -25,7 +24,7 @@ export class App {
     this._setupSnap();
     this._init();
 
-    initGUI(gl, this.params);
+    initGUI(gl);
   }
 
   _init() {
@@ -88,7 +87,7 @@ export class App {
       // スクロール中はタイマーをリセット
       if (snapTimer) clearTimeout(snapTimer);
 
-      // スクロールが150ms止まったら最寄りセクションへスナップ
+      // スクロールが100ms止まったら最寄りセクションへスナップ
       snapTimer = setTimeout(() => {
         const scrollY = window.scrollY;
         const nearest = sections.reduce((prev, curr) =>
@@ -115,20 +114,18 @@ export class App {
     // 自動再生のため delta で mixer を更新
     const delta = this.clock.getDelta();
     this.mixer?.update(delta);
-    if (this.cube) {
-      this.cube.updateMatrixWorld(true);
-      this._trackBox.setFromObject(this.cube);
-      this._trackBox.getCenter(this._trackCenter);
-      gl.camera.lookAt(this._trackCenter);
-    }
+    // if (this.cube) {
+    //   this.cube.updateMatrixWorld(true);
+    //   this._trackBox.setFromObject(this.cube);
+    //   this._trackBox.getCenter(this._trackCenter);
+    //   gl.camera.lookAt(this._trackCenter);
+    // }
     gl.renderer.renderAsync(gl.scene, gl.camera);
   }
 
   _resize() {
     const { width, height, aspect } = gl.size;
-
     gl.camera.aspect = aspect;
-
     gl.camera.updateProjectionMatrix();
     gl.renderer.setSize(width, height);
   }

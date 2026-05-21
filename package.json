@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "devDependencies": {
+    "@types/dat.gui": "^0.7.13",
     "@types/node": "^22.13.10",
     "autoprefixer": "^10.4.21",
     "css-declaration-sorter": "^7.2.0",
